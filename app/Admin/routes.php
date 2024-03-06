@@ -1,6 +1,9 @@
 <?php
 
+use App\Admin\Controllers\AwardController;
+use Encore\Admin\Facades\Admin;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 
 Admin::routes();
 
@@ -12,5 +15,6 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('home');
+    $router->resource('/awards', AwardController::class);
 
 });
