@@ -18,4 +18,37 @@
  *
  */
 
+use Encore\Admin\Form;
+use Encore\Admin\Grid;
+use Encore\Admin\Show;
+
+app('view')->prependNamespace('admin', resource_path('views/admin'));
 Encore\Admin\Form::forget(['map', 'editor']);
+
+Form::init(function (Form $form) {
+    $form->disableReset();
+    $form->disableEditingCheck();
+    $form->disableCreatingCheck();
+    $form->disableViewCheck();
+    $form->tools(function (Form\Tools $tools) {
+        $tools->disableDelete();
+        $tools->disableView();
+        $tools->disableList();
+    });
+});
+Grid::init(function (Grid $grid) {
+    $grid->disableFilter();
+    $grid->disableCreateButton();
+    $grid->disableExport();
+    $grid->actions(function ($actions) {
+        $actions->disableView();
+    });
+});
+
+Show::init(function (Show $show) {
+    $show->panel()->tools(function ($tools){
+        $tools->disableEdit();
+        $tools->disableList();
+        $tools->disableDelete();
+    });
+});

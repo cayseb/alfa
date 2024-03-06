@@ -21,6 +21,14 @@ class AdminNavigationSeeder extends Seeder
             "uri" => "/",
             "permission" => null
         ],
+        [
+            "parent_id"=> 0,
+            "order" => 2,
+            "title" => "Новости",
+            "icon" => "fa-bar-chart",
+            "uri" => "/news",
+            "permission" => null
+        ],
 
     ];
 

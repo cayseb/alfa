@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\GetNewsAction;
+use App\Http\Controllers\Api\GetNewsItemAction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('news')->name('news')->group(function () {
+    Route::get('/', GetNewsAction::class)->name('.index');
+    Route::get('/{news:slug}', GetNewsItemAction::class)->name('.show');
 });
